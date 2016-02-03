@@ -1,0 +1,148 @@
+for $breakpoint in $media-breakpoints-list
+  +media($breakpoint)
+    $u-reset{$media}, .u-reset{$media}
+      reset(false)
+
+
+
+// @include media('each', 'breakpoint') {
+//   // @name Overview
+//   // @page utilities
+//   // @description
+//   // With the exception of animations all `.u-` classes have the ability to be used on any viewport size when needed.
+//   // The prefixes for these are the same as you would write them in the sass `sm`, `md`, `lg`, `xl`
+//   // @markup **Example:**
+//   //  <p class="u-text-center u-text-left@md">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+//
+//   // @name reset
+//   // @author Tyler Benton
+//   // @page utilities/reset
+//   // @description
+//   // This will reset `margin-left`, `margin-right`, and `padding` to `0`, and removes the list styles
+//   //
+//   // @markup
+//   // <ul class="u-reset">
+//   //  <li>Item</li>
+//   //  <li>Item</li>
+//   //  <li>Item</li>
+//   // </ul>
+//   .u-reset#{$media} {
+//     @include reset;
+//   }
+//
+//   // @name clear
+//   // @author Tyler Benton
+//   // @page utilities/clear
+//   // @description A helper class to clear floated elements
+//   //
+//   // @markup How to use:
+//   //  <style>.clear-example div{float:left;margin:0;}</style> <!-- for example only -->
+//   //  <div class="clear-example u-clear">
+//   //   <div>Item</div>
+//   //   <div>Item</div>
+//   //   <div>Item</div>
+//   //  </div>
+//   //
+//   // @markup (example="false") How **NOT** to use:
+//   //  <style>.clear-example div{float:left;margin:0;}</style> <!-- for example only -->
+//   //  <div class="clear-example">
+//   //   <div>Item</div>
+//   //   <div>Item</div>
+//   //   <div>Item</div>
+//   //   <br class="u-clear">
+//   //  </div>
+//   .u-clear#{$media} {
+//     @include clear;
+//   }
+//
+//   // @name Showing and hiding content
+//   // @author Tyler Benton
+//   // @page utilities/display
+//   // @description
+//   // Force an element to be shown or hidden with the use of `.u-show` and `.u-hide` classes. These classes use `!important` to avoid specificity conflicts, just like the quick floats. They are only available for block level toggling.
+//   //
+//   // @markup {html} (example="false")
+//   // <div class="u-show"></div>
+//   // <div class="u-show--inline"></div>
+//   // <div class="u-hide"></div>
+//   // <div class="u-invisible"></div>
+//   // <div class="u-visible"></div>
+//   .u-show {
+//     &#{$media} {
+//       @extend .u-visible#{$media};
+//       display: block !important;
+//     }
+//
+//     &--inline#{$media} {
+//       @extend .u-visible#{$media};
+//       display: inline-block !important;
+//     }
+//   }
+//
+//   .u-hide#{$media} {
+//     @extend .u-invisible#{$media};
+//     display: none !important;
+//   }
+//
+//   .u-invisible#{$media} {
+//     opacity: 0 !important;
+//     visibility: hidden !important;
+//   }
+//
+//   .u-visible#{$media} {
+//     opacity: 1 !important;
+//     visibility: visible !important;
+//   }
+//
+//   // @name Screen readers
+//   // @author Tyler Benton
+//   // @page utilities/screen-reader
+//   // @description Only display content to screen readers. Checkout this [article](http://a11yproject.com/posts/how-to-hide-content/) for more information
+//   //
+//   // @markup {html} (example="false")
+//   // <div class="u-sr-only"></div>
+//   // <div class="u-sr-only u-sr-only--focusable"> <!-- only displays content when focused -->
+//   .u-sr-only {
+//     &#{$media} {
+//       border: 0;
+//       clip: rect(0, 0, 0, 0);
+//       height: 1px;
+//       margin: -1px;
+//       overflow: hidden;
+//       padding: 0;
+//       position: absolute;
+//       width: 1px;
+//     }
+//
+//     // Use in conjunction with .sr-only to only display content when it's focused.
+//     // Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+//     // Credit: HTML5 Boilerplate
+//     &--focusable#{$media} {
+//       &:active, &:focus {
+//         clip: auto;
+//         height: auto;
+//         margin: 0;
+//         overflow: visible;
+//         position: static;
+//         width: auto;
+//       }
+//     }
+//   }
+//
+//   // @name Pull
+//   // @author Tyler Benton
+//   // @page utilities/pull
+//   // @description Floats or unfloats an element
+//   //
+//   // @markup {html}
+//   // <div class="u-pull--right">I float right</div>
+//   // <div class="u-pull--left">I float left</div>
+//   // <div class="u-pull--none">I don't float anymore</div>
+//   .u-pull {
+//     @each $type in ( 'right', 'left', 'none') {
+//       &--#{$type}#{$media} {
+//         float: #{$type} !important;
+//       }
+//     }
+//   }
+// }

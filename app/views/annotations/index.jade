@@ -1,0 +1,7 @@
+include ./name.jade
+include ./author.jade
+include ./description.jade
+include ./access.jade
+mixin annoation(name, args)
+  if ['__start', '__end'].indexOf(name) < 0 && !!jade_mixins[name]
+    +#{name}(args)

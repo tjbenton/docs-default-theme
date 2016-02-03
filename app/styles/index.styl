@@ -1,0 +1,98 @@
+@import 'helpers'
+// @import 'utilities'
+// @import 'base'
+// @import 'components'
+// @import 'scopes'
+// @import 'objects'
+// @import 'helpers/mixins/_media'
+
+// @media (min-width: 500px)
+//   fuck = 'fuck me'
+//   .foo
+//     background: fuck
+
+// @media (min-width: 500px)
+//   .bar
+//     background fuck
+//
+
+
+// for $breakpoint in $media-breakpoints-list
+
+// +media('>=sm')
+//   .foo{$media}
+//     p('current-media inside of called mixin = ' + current-media())
+//     background $media
+
+// .foo{$media} {
+//   +media('>=sm') {
+//     p('current-media inside of called mixin = ' + current-media())
+//     background: $media
+//   }
+// }
+
+// +media('>=sm') {
+//   p(
+//     unquote('a. current-media inside of called mixin = '),
+//     current-media(),
+//     unquote(''),
+//     unquote('b. the media variable defined in mixin = '),
+//     -string($media)
+//   )
+//   .foo{$media} {
+//      background: $media
+//   }
+// }
+
+
+    // reset()
+
+// body
+  // background url(svg('../images/logo_isotonix.svg')) 0 0 / contain no-repeat
+  // triangle('left', black)
+
+// .ie-test
+//   background black
+//   +ie()
+//     content 'all'
+//   +ie(9..11)
+//     content 'ie9, ie10, ie11'
+//
+//   +media('>=sm')
+//     .foo{$media}
+//       fuck $media
+//       .fuck
+//         background blue
+//   +moz()
+//     fuck yeah
+
+// .image-set
+//   background color(a) image-set(url('images/foo.jpg') 1x, url('images/foo.jpg') 2x) 0 0 no-repeat
+//
+// $foo = color(a)
+// foo
+//   color(a)
+//   color $foo
+//   color inherit
+//   color a
+//   color color(a)
+//   color a 2
+//   color a -2
+//   background color(a) url('sdfsdf.png') 0 0 no-repeat
+//
+// .u-clear
+//   clear()
+//
+//
+// .foo
+//   reset()
+//   background blue
+//   padding 0 0 1px 0px
+//
+// .u-reset
+//   reset()
+//
+// .bar
+//   reset()
+//   margin-left 10px
+//   padding 20px

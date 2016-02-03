@@ -1,0 +1,118 @@
+/// Creates a list of global breakpoints
+$media-breakpoints = {
+  'sm': 568px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1400px
+}
+
+$media-breakpoints-list = split(',', ',>=' + join(',>=', keys($media-breakpoints)))
+
+/// Creates a list of static expressions or media types
+$media-expressions ?= {
+  'screen': 'screen',
+  'print': 'print',
+  'handheld': 'handheld',
+  'retina2x': '(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)',
+  'retina3x': '(-webkit-min-device-pixel-ratio: 3) and (min-resolution: 350dpi)'
+}
+
+/// Defines a number to be added or subtracted from each unit when declaring breakpoints with exclusive intervals
+$unit-intervals ?= { 'px': 1, 'em': 0.01, 'rem': 0.1 }
+
+// media($breakpoint, $suffix = false) {
+//   require-string($breakpoint)
+//   $parsed-query = parse-query($breakpoint)
+//
+//   $suffix-str = ''
+//
+//   if $suffix && $parsed-query.value in keys($media-breakpoints) {
+//     $suffix-str = '&\@' + $parsed-query.value
+//   }
+//
+//   {$suffix-str} {
+//     if !$parsed-query.value {
+//       $media = $m = ''
+//       {block}
+//     } else {
+//       @media ({$parsed-query.expression}) {
+//         // set the current media state
+//         if $parsed-query.value in keys($media-breakpoints) {
+//           $media = $m = '\@' + $parsed-query.value
+//         }
+//         {block}
+//       }
+//     }
+//   }
+// }
+media($breakpoint) {
+  require-string($breakpoint)
+  $parsed-query = parse-query($breakpoint)
+
+  if !$parsed-query.value {
+    $media = $m = ''
+    {block}
+  } else {
+    @media ({$parsed-query.type} : $parsed-query.size) {
+      // set the current media state
+      if $parsed-query.value in keys($media-breakpoints) {
+        $media = $m = '\@' + $parsed-query.value
+      }
+      {block}
+    }
+  }
+}
+
+parse-query($expression) {
+  if !$expression {
+    return {
+      'expression': '',
+      'type': '',
+      'size': '',
+      'operator': '',
+      'dimension': '',
+      'value': ''
+    }
+  }
+  p(match('^(height|width)?([<>=]{1,})(.*)', $expression))
+  $parsed-query = slice(match('^(height|width)?([<>=]{1,})(.*)', $expression), 1)
+  $type = $parsed-query[0] || 'width'
+  $operator = $parsed-query[1]
+  $value = $parsed-query[2]
+  $size = ''
+  $is-value = true
+
+  if $expression in keys($media-expressions) {
+    return unquote($media-expressions[$expression]);
+  }
+
+  if $value in keys($media-breakpoints) {
+    $size = $media-breakpoints[$value];
+  } else {
+    $size = convert($value)
+  }
+
+  $unit = $unit-intervals[unit($size)]
+
+  if $operator == '>' {
+    $size += $unit
+    $type = 'min-' + $type
+  } else if $operator == '<' {
+    $size -= $unit
+    $type = 'max-' + $type
+  } else if $operator == '>=' {
+    $type = 'min-' + $type
+  } else if $operator == '<=' {
+    $type = 'max-' + $type
+  } else {
+    warn($expression + ' is missing an operator.');
+  }
+
+  return {
+    'type': $type,
+    'size': $size,
+    'expression': $type + ': ' + $size,
+    'operator': $operator,
+    'value': $value
+  }
+}

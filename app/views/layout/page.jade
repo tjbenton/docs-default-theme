@@ -1,0 +1,10 @@
+include ../annotations/index.jade
+block content
+    header.docs-c-header
+      each value, name in header
+        +annoation(name, value)
+    
+    section.docs-c-block
+      each item in body
+        each value, name in item
+          +annoation(name, value)

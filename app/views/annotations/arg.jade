@@ -1,0 +1,14 @@
+mixin arg(args) 
+  table.docs-c-args
+    each arg in args
+      tr
+        td.docs-c-args__name= arg.name
+        td.docs-c-args__types
+          each type in arg.types
+            code= type
+        td.docs-c-args__description= arg.description
+            
+          
+      
+    
+  

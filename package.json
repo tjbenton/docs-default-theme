@@ -1,0 +1,55 @@
+{
+  "name": "docs-theme-default",
+  "version": "0.0.1",
+  "description": "Default theme for docs",
+  "main": "app.js",
+  "scripts": {
+    "start": "NODE_ENV=development & DEBUG=docs-theme-default:* & nodemon app.js",
+    "inspector": "NODE_ENV=development & DEBUG=docs-theme-default:* & node-inspector --web-port=6543 --debug-port=4567 & nodemon --debug=4567 app.js",
+    "preinstall": "node-gyp",
+    "postinstall": "jspm install; cd node_modules/easy-livereload; npm i; cd ../../",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjbenton/docs-theme-default.git"
+  },
+  "author": "Tyler Benton <tjbenton21@gmail.com> (https://github.com/tjbenton)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tjbenton/docs-theme-default/issues"
+  },
+  "homepage": "https://github.com/tjbenton/docs-theme-default#readme",
+  "dependencies": {
+    "autoprefixer": "^6.2.3",
+    "body-parser": "^1.14.2",
+    "cli-table": "^0.3.1",
+    "cookie-parser": "^1.4.1",
+    "node-gyp": "^3.2.1",
+    "css-mqpacker": "^4.0.0",
+    "easy-livereload": "github:tjbenton/easy-livereload",
+    "express": "^4.13.3",
+    "jade": "^1.11.0",
+    "jade-babel": "^5.0.0",
+    "jspm": "^0.16.26",
+    "morgan": "^1.6.1",
+    "nodemon": "^1.8.1",
+    "poststylus": "^0.2.2",
+    "purdy": "^1.6.0",
+    "response-time": "^2.3.1",
+    "stylus": "^0.53.0"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public",
+      "packages": "public/js/jspm_packages"
+    },
+    "configFile": "public/js/config.js",
+    "dependencies": {},
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
