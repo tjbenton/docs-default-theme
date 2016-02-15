@@ -302,7 +302,7 @@ _color($this, $variation = 0, $namespace = 'default', $force = false, $save = tr
     return $result;
   }
 
-  return $result unquote("/* @errror " + -string($result) + " isn't a color */")
+  return $result unquote("/* @error " + -string($result) + " isn't a color */")
 }
 
 color($this, $variation = 0, $namespace = 'default', $force = false, $save = true) {
