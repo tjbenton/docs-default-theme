@@ -25,7 +25,6 @@
     "body-parser": "^1.14.2",
     "cli-table": "^0.3.1",
     "cookie-parser": "^1.4.1",
-    "node-gyp": "^3.2.1",
     "css-mqpacker": "^4.0.0",
     "easy-livereload": "github:tjbenton/easy-livereload",
     "express": "^4.13.3",
@@ -33,11 +32,12 @@
     "jade-babel": "^5.0.0",
     "jspm": "^0.16.26",
     "morgan": "^1.6.1",
+    "node-gyp": "^3.2.1",
     "nodemon": "^1.8.1",
     "poststylus": "^0.2.2",
     "purdy": "^1.6.0",
     "response-time": "^2.3.1",
-    "stylus": "^0.53.0"
+    "stylus": "github:stylus/stylus#dev"
   },
   "jspm": {
     "directories": {

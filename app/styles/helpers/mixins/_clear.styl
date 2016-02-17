@@ -24,18 +24,27 @@
 ///   }
 /// }
 clear($extend = true)
-  $selector = selectors()
-
-  unless has-pseudo('before', 'after') {
-    $selector = selectors() + ':after'
+  if has-pseudo('before', 'after') {
+    clear both
+    content ''
+    display table
+    position relative
+  } else {
+    &:after {
+      clear($extend)
+    }
   }
-
-  /{$selector}
-    if $extend
-      +cache('clear')
-        clear(false)
-    else
-      clear both
-      content ''
-      display table
-      position relative
+  //
+  // /{$selector}
+  //   clear both
+  //   content ''
+  //   display table
+  //   position relative
+    // if $extend
+    //   +cache('clear')
+    //     clear(false)
+    // else
+    //   clear both
+    //   content ''
+    //   display table
+    //   position relative

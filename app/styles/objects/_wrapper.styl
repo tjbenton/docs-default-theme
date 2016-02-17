@@ -21,17 +21,17 @@
 ///   </div>
 ///   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet repudiandae veritatis reiciendis, voluptatum magnam, officiis ut esse ipsa molestias est, nesciunt cum. Rerum minus autem, odio in tempora, vitae iste.</p>
 /// </div>
-.o-wrapper 
-  padding $config.spacing
+.o-wrapper
+  padding: ($config.spacing)
 
   &__flush
-    margin-left -$config.spacing
-    margin-right -$config.spacing
+    margin-left: -($config.spacing)
+    margin-right: -($config.spacing)
 
-  @each $size, $value in $spacing-sizes
-    &--{$size}
-      padding $value
+for $size, $value in $spacing-sizes
+  .o-wrapper--{$size}
+    padding $value
 
-    > .o-wrapper__flush
-      margin-left -$value
-      margin-right -$value
+    > .wrapper__flush
+      margin-left -($value)
+      margin-right -($value)
