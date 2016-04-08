@@ -82,13 +82,12 @@ head
   //- js
   block js_top
     - each file in js_top
-      script(src="#{paths.js}/#{file}")
+      script(src="#{path.join(paths.js, file)}")
     
   != LRScript
   
-  //- - console.log(LRScript)
   script.
-    System.import('index')
+    System.import('site')
     //- script.
       //- System.import('site/combined.js');
       //- System.import('site');

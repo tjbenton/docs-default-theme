@@ -5,5 +5,5 @@ npm*
 
 *.map
 public/styles
-public/js/jspm_packages
+public/jspm_packages
 *.bundle*
