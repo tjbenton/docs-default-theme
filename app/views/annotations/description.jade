@@ -1,2 +1,4 @@
-mixin description(str)
-  != str
+mixin description(arg, token)
+  div(class="#{prefix}-c-annotation--description")
+    h4 Description
+    +json(arg)

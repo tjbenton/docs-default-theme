@@ -1,0 +1,53 @@
+mixin window(obj, token, block)
+  - block = prefix + '-c-window' + (!!block ? '--' + block : '')
+  - obj = obj.toString().slice(8, -1) !== 'Object' ? { raw: obj, escaped: obj } : obj
+  - var lang = obj.language || obj.lang || 'json'
+  - var blockinfo = (token || {}).blockinfo || {}
+  - var file_path = (blockinfo.file || {}).path
+  - var description = obj.description
+  - obj.settings = obj.settings || {}
+  - obj.settings.class = obj.settings.class ? obj.settings.class.replace(/\s*\./g, ' ') : ''
+  - var code = blockinfo.code || {}
+  if description
+    != description
+  div(class="#{block}")&attributes(obj.settings)
+    div(class="#{block}__header")
+      div(class="#{block}__url")
+        span(class='#{block}__project-name')= pkg.name
+        if !!file_path
+          span(class="#{block}__path")= file_path
+      span(class="#{block}__language")= lang
+    div(class='#{block}__body')
+      each type in [ 'raw', 'raw_stateless', 'escaped', 'escaped_stateless' ]
+        - var should_escape = type.indexOf('escaped') > -1
+        - var data = obj[type.replace('escaped', 'raw')] || obj[type]
+        if data
+          div(class="#{block}__section #{block}__section--#{type.replace('_', '-')}", data-type="#{type.replace('_', '-')}")
+            if should_escape
+              - var length = data.split('\n').reduce(function(prev, next) {
+              -   var result = prev.length < next.length ? next : prev
+              -   return result 
+              - }).length
+              - data = highlight(data, lang).split('\n')
+              - var start = code.start || 1
+              - var end = code.end || (start + data.length) || 0
+              - var li = '<li class="' + block + '__line">'
+              - var li_end = '</li>\n'
+              - data = li + data.join(li_end + li) + li_end
+              - function getSpaces(total) {
+              -   var str = ''
+              -   while(total--) str += '&nbsp;'
+              -   return str
+              - }
+              pre(class="#{block}__pre #{syntax_highlight} hljs #{lang}", data-type="#{syntax_highlight}")
+                code(class="#{block}__code")
+                  ul(
+                    class="#{block}__lines", 
+                    data-start="#{start}", 
+                    data-end="#{end}",
+                    style="counter-reset: line #{start > 0 ? start - 1 : start}"
+                  )!= data
+                  div(class="#{block}__fake-line")
+                    != getSpaces(length + 4)
+            else
+              != data

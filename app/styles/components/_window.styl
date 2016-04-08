@@ -1,0 +1,123 @@
+.c-window
+  $border-radius = 4px
+  // background green
+  border-radius $border-radius
+  border 1px solid color(a, -7)
+
+  &__header
+    background color(a, -7.75)
+    border-radius ($border-radius - 2) ($border-radius - 2) 0 0
+    margin 0
+    padding 0.5em 0.75em 0.55em 63px
+    font-size 12px
+    // border 1px solid #d4d7d7
+    // border-bottom none
+    // border-radius 3px 3px 0 0
+    // color #34495e
+    // display block
+    line-height 1em
+    position relative
+
+    &:before
+      $red = #ed7669
+      $yellow = #f4d03f
+      $green = #28e1bd
+      $size = 11px
+      $spacing = 5px
+      background $red
+      border-radius 100%
+      box-shadow ($size + $spacing) 0 0 $yellow, (($size + $spacing) * 2) 0 0 $green
+      content ''
+      height $size
+      left 9px
+      position absolute
+      top 10px
+      width $size
+
+  &__url
+    background white
+    border-radius $border-radius
+    display block
+    font-size 12px
+    overflow hidden
+    white-space nowrap
+    text-overflow ellipsis
+    margin 0
+    padding 0.2857em 1em
+
+  &__language
+    display none
+
+  &__body
+    margin 0
+    padding 0
+
+  &__section
+    border-radius 0 0 $border-radius $border-radius
+    overflow hidden
+    &--raw, &--raw-stateless
+      padding: $config.spacing;
+
+  &__body, &__pre, &__code
+    border-radius 0 0 $border-radius $border-radius
+
+  &__pre, &__code
+    display block
+    font 500 13px/1.4em 'Source Code Pro', Consolas, Monaco, 'Andale Mono', monospace
+    font-smoothing auto
+    hyphens none
+    overflow-x scroll
+    overflow-y hidden
+    padding 0
+    position relative
+    tab-size 4
+    text-align left
+    white-space nowrap
+    word-break normal
+    word-spacing normal
+
+  &__lines
+    list-style none outside none
+    counter-reset line
+
+  &__lines, &__line, &__fake-line
+    list-style none outside none
+    margin 0
+    padding 0
+
+  &__line
+    counter-increment line
+    white-space pre
+    &:before
+      content counter(line)
+      position relative
+      background blue
+
+  &__fake-line
+    height 0px
+    +user-select(none)
+
+      // padding-right: $config.spacing;
+      // width: s('calc(100% - %s)', $config.spacing);
+      // overflow hidden
+      //
+      // &:after
+      //   content ''
+      //   background pink
+      //   width 100%
+      //   height 100%
+      //   top 0
+      //   right: -($config.spacing);
+      //   z-index -1
+
+      // &__code
+      // padding: $config.spacing 0 $config.spacing;
+      // padding-right 0
+      // overflow auto
+
+      // &:after
+      //   content ''
+      //   width 1em
+      //   background pink
+      //   height 1em
+      //   position relative

@@ -1,3 +1,4 @@
-mixin author(...authors)
-   each author in authors
-     h3.docs-c-author= author
+mixin author(arg, token)
+  div(class="#{prefix}-c-annotation--author")
+    h4 Author
+    +json(arg)

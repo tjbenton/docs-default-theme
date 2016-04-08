@@ -1,9 +1,4 @@
-mixin name(str)
-  h1.c-name= str
-  
-  //- mixin menu(tree)
-  //-   ul
-  //-     for node in tree
-  //-       li= node.title
-  //-       if node.sub
-  //-         +menu(node.sub)
+mixin name(arg, token)
+  div(class="#{prefix}-c-annotation--name")
+    h4 Name
+    +json(arg)

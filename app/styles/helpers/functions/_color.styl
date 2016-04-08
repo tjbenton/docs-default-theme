@@ -12,7 +12,8 @@ $___color-settings ?= {
   'map': 'integers', // determins if you're using integers to get your light and dark values or words.(@feature - this hasn't been added yet)
   'smart-color': 0.25, // determins how far you go back if the color is #fff or #000 (example if you called color(#ccc, 25) that will be black but if smart color is set then it will be #060606)
   'functions': { // holds the light and dark functions to use for the different variations. (only light, and dark can be the keys of this map)
-    'light': { 'lighten': 5% }, // holds the light functions that will run if the variation is less than 0
+    // 'light': { 'lighten': 11.85% }, // holds the light functions that will run if the variation is less than 0
+    'light': { 'lighten': 11.85% }, // holds the light functions that will run if the variation is less than 0
     'dark': { 'darken': 5% } // holds the dark functions that will run if the variation is less than 0
   }
 }

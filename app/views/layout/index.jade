@@ -71,11 +71,6 @@ head
   
   //- manifest file for icons, etc.
   //-link(rel="manifest" href="/manifest.webmanifest")
-  //- Fallback application metadata for legacy browsers
-  //-meta(name="application-name" content="OnTrack.fit")
-  //-link(rel="icon" sizes="16x16 32x32 48x48" href="lo_def.ico")
-  //-link(rel="icon" sizes="512x512" href="hi_def.png")
-  
   //- icons for now until manifest file is figured out
   include icons
 
@@ -92,22 +87,29 @@ head
   != LRScript
   
   //- - console.log(LRScript)
+  script.
+    System.import('index')
     //- script.
       //- System.import('site/combined.js');
       //- System.import('site');
 
 body(itemscope itemtype="http://schema.org/WebPage")
-  p(class="s-browserupgrade c-alert c-alert--warning") You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/?locale=en">upgrade your browser</a> to improve your experience.
+  p(class="#{prefix}-c-browser-upgrade #{prefix}c-alert #{prefix}c-alert--warning") You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/?locale=en">upgrade your browser</a> to improve your experience.
 
-  //- header
-  include header
-  //- main content
-  include content
-  
-  //- footer
-  include footer
+  div(class="#{prefix}-s-documentation")
+    include nav
+    
+    div(class="#{prefix}-s-documentation__body")
+      //- header
+      include header
+      
+      //- main content
+      include content
+      
+      //- footer
+      include footer
 
-  block js_bottom
-    - each file in js_bottom
-      script(src="#{paths.js}/#{file}")
+    block js_bottom
+      - each file in js_bottom
+        script(src="#{paths.js}/#{file}")
 </html>
