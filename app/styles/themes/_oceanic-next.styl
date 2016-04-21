@@ -114,27 +114,82 @@ highlight($color, $variation = 0, $force = false, $save = true)
   display block
   overflow-x auto
   background highlight('gray', 4)
-  // balls highlight('gray', 4)
-  color highlight('gray')
-  // shit highlight('gray')
+  color highlight('gray', -4)
   padding 0.5em
+
+  span
+    position relative
+
+  &-leading-whitespaces
+    color highlight('gray', 2)
+    cursor text
+    &:empty
+      display none
+
+  &-leading-whitespace
+    &:after, &:before
+      content '•'
+      left 0
+      top 0
+      width 100%
+      font-size 0.5em
+      text-align center
+
+    &:before
+      color rgba(black, 0)
+
+    &:nth-of-type(odd)
+      &:before
+        border-left 1px solid highlight('gray', 2)
+
+  &-linenos, &-lineno
+    display block
+    margin 0
+    padding 0
+
+    &:after
+      display block
+      position relative
+
+  &-linenos
+    color highlight('gray')
+    counter-reset line
+    user-select(none)
+    flex 0 0 auto
+    margin-right: $config.spacing-sizes.small;
+    text-align right
+
+    &:after
+      content attr(data-end)
+      height 0
+      overflow hidden
+
+
+  &-lineno
+    counter-increment line
+
+    &:after
+      content counter(line)
 
   /* Comment */
   &-comment,
   &-quote
-    color highlight(gray, -5)
+    color highlight('gray', -5)
+
+
+  &-tag
+    color highlight('turquoise')
 
   /* Red */
   &-variable,
   &-template-variable,
-  &-tag,
   &-name,
   &-selector-id,
   &-selector-class,
   &-regexp,
+  &-title,
   &-deletion
-    color #f2777a
-    color highlight(red)
+    color highlight('red')
 
   /* Orange */
   &-number,
@@ -145,32 +200,38 @@ highlight($color, $variation = 0, $force = false, $save = true)
   &-params,
   &-meta,
   &-link
-    color #f99157
-    color highlight(orange)
+    color highlight('orange')
 
   /* Yellow */
   &-attribute
-    color #ffcc66
+    color highlight('yellow')
 
   /* Green */
   &-string,
   &-symbol,
   &-bullet,
-  &-addition
-    color #99cc99
+  &-addition,
+  &-value
+    color highlight('green')
 
   /* Blue */
-  &-title,
   &-section
-    color #6699cc
+    color highlight('blue')
 
   /* Purple */
   &-keyword,
-  &-selector-tag
-    color #cc99cc
+  &-selector-tag,
+  &-attribute
+    color highlight('purple')
 
   &-emphasis
     font-style italic
 
   &-strong
     font-weight bold
+
+
+  &.json
+    color highlight('gray', -4)
+  &.json &-attribute
+    color highlight('green')

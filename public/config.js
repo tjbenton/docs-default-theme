@@ -1,4 +1,3 @@
-/* eslint-disable */
 System.config({
   baseURL: "/",
   defaultJSExtensions: true,
@@ -18,7 +17,10 @@ System.config({
   map: {
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
+    "cash": "github:tjbenton/cash@1.2.1",
     "core-js": "npm:core-js@1.2.6",
+    "jquery/PEP": "github:jquery/PEP@0.4.1",
+    "pointer-events": "github:jquery/PEP@0.4.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },

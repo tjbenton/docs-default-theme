@@ -1,2 +1,12 @@
-header(class="#{prefix}-s-documentation__header #{prefix}-o-container")
+header(class="#{prefix}-s-header #{prefix}-o-container")
   h1 Site header
+  fieldset(class="#{prefix}-c-settings #{prefix}-js-settings")
+    label(class="#{prefix}-c-settings__state")
+      | state
+      input(class="#{prefix}-js-settings__setting", type="checkbox", value="state")
+    label(class="#{prefix}-c-settings__designer")
+      | designer
+      input(class="#{prefix}-js-settings__setting", type="checkbox", value="designer")
+    label(class="#{prefix}-c-settings__developer")
+      | developer
+      input(class="#{prefix}-js-settings__setting", type="checkbox", value="developer")

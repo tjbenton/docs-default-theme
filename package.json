@@ -5,9 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "NODE_ENV=development & DEBUG=docs-theme-default:* & nodemon app.js",
+    "refresh": "rm -rf node_modules/ public/jspm_packages/ public/styles/; npm i",
     "inspector": "NODE_ENV=development & DEBUG=docs-theme-default:* & node-inspector --web-port=6543 --debug-port=4567 & nodemon --debug=4567 app.js",
     "preinstall": "node-gyp",
-    "postinstall": "jspm install; cd node_modules/easy-livereload; npm i; cd ../../",
+    "copy": "rm -rf public/js public/images; cp -rf app/js public; cp -rf app/images public",
+    "postinstall": "jspm install; cd node_modules/easy-livereload; npm i; cd ../../; rename -d '.css' -a '.styl' node_modules/highlight.js/styles/*.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,14 +26,15 @@
     "autoprefixer": "^6.3.5",
     "body-parser": "^1.15.0",
     "cli-table": "^0.3.1",
+    "clone": "^1.0.2",
     "cookie-parser": "^1.4.1",
     "css-mqpacker": "^4.0.1",
-    "easy-livereload": "github:tjbenton/easy-livereload",
+    "easy-livereload": "^1.0.4",
     "express": "^4.13.3",
     "highlight.js": "^9.2.0",
     "jade": "^1.11.0",
     "jade-babel": "^5.0.0",
-    "jspm": "^0.16.32",
+    "jspm": "^0.16.33",
     "jstransformer-highlight": "^1.0.1",
     "morgan": "^1.7.0",
     "node-gyp": "^3.3.1",
@@ -42,15 +45,19 @@
     "stylus": "github:stylus/stylus#dev"
   },
   "devDependencies": {
-    "babel-eslint": "^6.0.2",
-    "eslint": "^2.6.0",
+    "babel-eslint": "^6.0.3",
+    "eslint": "^2.8.0",
     "eslint-plugin-babel": "^3.1.0"
   },
   "jspm": {
     "directories": {
       "baseURL": "public"
     },
-    "dependencies": {},
+    "dependencies": {
+      "cash": "github:tjbenton/cash@^1.2.1",
+      "jquery/PEP": "github:jquery/PEP@^0.4.1",
+      "pointer-events": "github:jquery/PEP@^0.4.1"
+    },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",

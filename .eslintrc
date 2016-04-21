@@ -27,6 +27,7 @@
   "env": {
     "node": true,
     "mocha": true,
+    "browser": true,
     "es6": true
   },
   "parser": "babel-eslint",
@@ -78,13 +79,13 @@
     "id-length": [
       1,
       {
-        "min": 2,
+        "min": 1,
         "max": 30,
         "properties": "always",
         "exceptions": [ "i", "k", "a", "b", "c", "d", "e", "l", "x", "y", "z", "_", "t" ]
       }
     ],
-    "id-match": [ 2, "^(?:[a-z]{2,}([A-Z]{1}[a-z]+)*$)|([a-z_]+$)" ],
+    "id-match": [ 2, "^(?:[a-z]{2,}([A-Z]{1}[a-z]+)*$)|([a-z_]+$)|\\$" ],
     "indent": [ 2, 2 , { "SwitchCase": 1 } ],
     "key-spacing": [ 2, { "beforeColon": false, "afterColon": true } ],
     "linebreak-style": [ 2, "unix" ],

@@ -83,6 +83,12 @@ head
   block js_top
     - each file in js_top
       script(src="#{path.join(paths.js, file)}")
+  
+  //- script(type='text/javascript').
+  //-   var globals = !{JSON.stringify(locals)};
+  //- - var data = global
+  //- script(type='text/javascript').
+    //- var whatTheFuck = !{fuck}
     
   != LRScript
   

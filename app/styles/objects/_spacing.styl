@@ -20,5 +20,5 @@
 for $type, $size in $config.spacing-sizes
   for $breakpoint in $media-breakpoints-list
     +media($breakpoint)
-      .o-spacing--{$type}{$media}{$not-hidden}
+      .o-spacing--{$type}{$media} > * ~ *{$not-hidden}
         margin-top $size

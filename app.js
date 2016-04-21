@@ -144,6 +144,22 @@ app.use(stylus.middleware({
 
 app.use(express.static(dir.public))
 
+
+var crypto = require('crypto')
+var base = require('./base-x')
+var encode_count = 0
+app.locals.encode = function encode(data) {
+  var hash = crypto.createHash('md5').update(JSON.stringify(data), 'utf8').digest('hex')
+  hash = hash.split('').reduce(function getCharCode(prev, next) {
+    return prev + next.charCodeAt()
+  }, 0)
+  encode_count++
+  hash = parseInt(encode_count + '' + hash)
+  console.log('hash:', hash)
+  return base.encode(hash, 4, 'letters')
+}
+
+
 // Routes
 app.get('/search', function searchRoute(req, res) {
   res.render('search/index', {})
@@ -223,6 +239,21 @@ app.listen(app.get('port'), function listen() {
   routerTable(app._router.stack)
 })
 
+var clone = require('clone')
+var globals = clone(app.locals)
+var globals_to_delete = [ 'nav', 'pages', 'path', 'LRScript', 'highlight_types' ]
+for (var key in globals) {
+  if (globals.hasOwnProperty(key)) {
+    if (
+      typeof globals[key] === 'function' ||
+      globals_to_delete.indexOf(key) > -1
+    ) {
+      delete globals[key]
+    }
+  }
+}
+
+app.locals.jade_globals = JSON.stringify(globals, null, 2)
 
 app.locals.locals = app.locals
 module.exports = app
