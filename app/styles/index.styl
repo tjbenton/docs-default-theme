@@ -12,19 +12,15 @@
 //     @import highlight($type)
 
 @require 'themes/_oceanic-next.styl'
+@import 'utilities'
+@import 'base'
+@import 'components'
+@import 'scopes'
+@import 'objects'
 
-// body
-//   background red
-+prefix-classes($prefix)
-  @import 'utilities'
-  @import 'base'
-  @import 'components'
-  @import 'scopes'
-  @import 'objects'
-
-  [class^='docs-c-annotation'],
-  [class*=' docs-c-annotation']
-    * + &
-      margin-top 2em
+[class^='docs-c-annotation'],
+[class*=' docs-c-annotation']
+  * + &
+    margin-top 2em
 
 

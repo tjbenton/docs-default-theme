@@ -6,10 +6,10 @@
 /// all sides. It's very reusable and you can nest it inside
 /// it's self.
 ///
-/// @state .o-wrapper--tiny
-/// @state .o-wrapper--small
-/// @state .o-wrapper--large
-/// @state .o-wrapper--huge
+/// @state .docs-o-wrapper--tiny
+/// @state .docs-o-wrapper--small
+/// @state .docs-o-wrapper--large
+/// @state .docs-o-wrapper--huge
 ///
 /// @markup
 /// <div class="o-wrapper {$state}" style="background: #e2e2e2">
@@ -21,7 +21,7 @@
 ///   </div>
 ///   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet repudiandae veritatis reiciendis, voluptatum magnam, officiis ut esse ipsa molestias est, nesciunt cum. Rerum minus autem, odio in tempora, vitae iste.</p>
 /// </div>
-.o-wrapper
+.docs-o-wrapper
   padding: ($config.spacing)
 
   &__flush
@@ -29,7 +29,7 @@
     margin-right: -($config.spacing)
 
 for $size, $value in $spacing-sizes
-  .o-wrapper--{$size}
+  .docs-o-wrapper--{$size}
     padding $value
 
     > .wrapper__flush

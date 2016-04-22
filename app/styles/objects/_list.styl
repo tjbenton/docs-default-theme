@@ -4,13 +4,13 @@
 // This object allows you to easily create inline lists of objects
 // without using the grid system
 //
-// @state .o-list--tiny
-// @state .o-list--small
-// @state .o-list--large
-// @state .o-list--huge
-// @state .o-list--flush
-// @state .o-list--flex - Displays as a flex list that wraps. It's convienet for lists that you just want to stretch to be equal heights.
-// @state .o-list--multi-line - Adds spacing on the top of each list item to ensure the correct spacing is applied
+// @state .docs-o-list--tiny
+// @state .docs-o-list--small
+// @state .docs-o-list--large
+// @state .docs-o-list--huge
+// @state .docs-o-list--flush
+// @state .docs-o-list--flex - Displays as a flex list that wraps. It's convienet for lists that you just want to stretch to be equal heights.
+// @state .docs-o-list--multi-line - Adds spacing on the top of each list item to ensure the correct spacing is applied
 //
 // @markup **Example**
 // <ul class="o-list {$state} d-o-list-example">
@@ -23,18 +23,18 @@
 // <ul>
 //
 // @markup {css} (code="false")
-// .d-o-list-example .o-list__item a {
+// .d-o-list-example .docs-o-list__item a {
 //   background: #e2e2e2;
 //   display: block;
 //   padding: 10px;
 // }
-// .d-o-list-example  .o-list__item:nth-child(odd) a {
+// .d-o-list-example  .docs-o-list__item:nth-child(odd) a {
 //   background: #d2d2d2;
 // }
 // .d-o-list-example .d-o-list-example__item a {
 //   padding: 5px 10px;
 // }
-.o-list {
+.docs-o-list {
   $this: &;
   $this: str-slice(nth(nth(&, 1), 1), 2);
   $gutter: get($config, 'spacing');
