@@ -1,5 +1,5 @@
 {
-  "site_title": "OnTrack.fit",
+  "site_title": "Docs",
   "seo": {
     "facebook": {
       "app_id": "123",
@@ -16,6 +16,7 @@
     "images": "/images",
     "css": "/styles",
     "js": "/js",
+    "fonts": "fonts/",
     "icons": "/images/icons"
   },
   "prefetch": [],
@@ -23,8 +24,8 @@
     "index.css"
   ],
   "js_top": [
-    "jspm_packages/system.js",
-    "config.js"
+    "../jspm_packages/system.js",
+    "../config.js"
   ],
   "js_bottom": []
 }

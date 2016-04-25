@@ -4,7 +4,7 @@
   "description": "Default theme for docs",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=development & DEBUG=docs-theme-default:* & nodemon app.js",
+    "start": "NODE_ENV=development & DEBUG=docs-theme-default:* & nodemon server/index.js",
     "refresh": "rm -rf node_modules/ public/jspm_packages/ public/styles/; npm i",
     "inspector": "NODE_ENV=development & DEBUG=docs-theme-default:* & node-inspector --web-port=6543 --debug-port=4567 & nodemon --debug=4567 app.js",
     "preinstall": "node-gyp",

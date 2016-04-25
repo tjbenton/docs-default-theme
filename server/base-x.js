@@ -127,4 +127,17 @@ base_x.addDictionary('DICTIONARY_89',
   numbers + upper + lower + '+"@*#%&/|()=?~[]{}$-_.:,;<>'
 )
 
-module.exports = base_x
+import crypto from 'crypto'
+
+base_x.encodeString = function encodeString(data, padding = 4, dictionary = 'letters') {
+  let hash = crypto
+    .createHash('md5')
+    .update(JSON.stringify(data), 'utf8')
+    .digest('hex')
+    .split('')
+    .reduce((prev, next) => prev + next.charCodeAt(), 0)
+  return base_x.encode(hash, padding, dictionary)
+}
+
+
+export default base_x
