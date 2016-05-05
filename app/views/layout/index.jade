@@ -1,3 +1,4 @@
+include ../helpers/index.jade
 //-
   /// @name view.layout.index
   /// @type view
@@ -20,6 +21,10 @@ head
         doc.className += ' t-ie t-ie12'
       }
     })(navigator.userAgent, document.documentElement);
+    
+  - var data = 'var documentation = ' + JSON.stringify({ data: documentation }) + ';'
+  - data += 'documentation = documentation.data'
+  script!=data
 
   //- these 2 meta tags need to be in the first 1024 bytes
   meta(charset="utf-8")
@@ -82,7 +87,7 @@ head
   //- js
   block js_top
     - each file in js_top
-      script(src="#{path.join(paths.js, file)}")
+      script(src="#{utils.path.join(paths.js, file)}")
   
   //- script(type='text/javascript').
   //-   var globals = !{JSON.stringify(locals)};

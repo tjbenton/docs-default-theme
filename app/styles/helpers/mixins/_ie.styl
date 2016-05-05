@@ -49,7 +49,7 @@
 /// }
 ie($ie-versions...) {
   $selector = selector()
-  $ie-base-selector = '.t-ie'
+  $ie-base-selector = '.' + $prefix + 't-ie'
   $ie-selector = $ie-base-selector
   $length = length(arguments)
   unless $length == 0 || arguments[0] == 'all' {

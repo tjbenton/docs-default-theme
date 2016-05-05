@@ -1,6 +1,5 @@
-export default function search(app) {
-  // Routes
-  app.get('/search', (req, res) => {
-    res.render('search/index', {})
-  })
+export default function search(app, router, controllers) {
+  app.get('/search', controllers.search.index)
+  app.get('/s', controllers.search.index)
+  return router
 }

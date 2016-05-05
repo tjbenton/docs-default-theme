@@ -9,9 +9,9 @@ mixin frame(obj, token, block)
   - obj.settings = obj.settings || {}
   - obj.settings.class = obj.settings.class ? obj.settings.class.replace(/\s*\./g, ' ') : ''
   - var code = blockinfo.code || {}
-  - var encoding = 'markup-' + encode(obj)
+  - var id = 'markup-' + encode(obj)
   
-  section(id="#{encoding}")
+  section(id="#{id}")
     if description
       != description
     div(class="#{block} #{frame}")&attributes(obj.settings)
@@ -19,11 +19,11 @@ mixin frame(obj, token, block)
         div(class="#{block}__url")
           span(class='#{block}__project-name')= pkg.name
           if !!file_path
-            span(class="#{block}__path")= file_path
+            span(class="#{block}__path") /#{file_path}
         div(class="#{block}__actions #{frame}__actions #{prefix}-o-spacing--off")
           a(class="#{block}__action--copy #{frame}__copy") Copy
-          a(class="#{block}__action--link #{frame}__link", href="##{encoding}") Link To
-          
+          a(class="#{block}__action--link #{frame}__link", href="##{id}") Link To
+
         span(class="#{block}__language")= lang
       div(class='#{block}__body')
         each type in [ 'raw', 'raw_stateless', 'escaped', 'escaped_stateless' ]

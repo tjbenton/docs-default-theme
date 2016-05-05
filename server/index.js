@@ -4,4 +4,4 @@ require('babel-register')({
 })
 
 
-require('./app.js')
+module.exports = require('./app.js').default
